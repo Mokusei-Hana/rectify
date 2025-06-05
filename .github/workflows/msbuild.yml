@@ -6,36 +6,13 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-  # Path to the solution file relative to the root of the project.
-  SOLUTION_FILE_PATH: Rectify11Installer.sln
-
-  # Configuration type to build.
-  BUILD_CONFIGURATION: Release
-
-permissions:
-  contents: read
-
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
-
-    - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
-
-    - name: Restore NuGet packages
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+    - uses: actions/checkout@v3
 
     - name: Build
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} /p:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
-
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: Rectify11Installer
-        path: Rectify11Installer/x64/Release/Rectify11Installer.exe 
+      run: |
+        "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe" Rectify11Installer.sln /p:Configuration=Release /p:Platform=x64 
