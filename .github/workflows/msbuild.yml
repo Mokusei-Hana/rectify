@@ -13,24 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: List files
-      shell: pwsh
-      run: |
-        Get-ChildItem -Path "Rectify11Installer/Rectify11" -Recurse | Select-Object FullName, Length
-
     - name: Build
       shell: pwsh
       run: |
         & 'C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\MSBuild.exe' Rectify11Installer.sln /p:Configuration=Release /p:Platform=x64
-
-    - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: Rectify11Installer
-        path: |
-          x64/Release/Rectify11Installer.exe
-          x64/Release/Controls.dll
-          x64/Release/PageRes.dll
-          x64/Release/Base.dll
-          x64/Release/segoe_r11.ttf
-          x64/Release/Rectify11/ 
