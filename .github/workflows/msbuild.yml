@@ -27,7 +27,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Setup Visual Studio
-      uses: microsoft/setup-vs@v1
+      uses: microsoft/setup-vs@v2
       with:
         vs-version: '2022'
         components: 'Microsoft.VisualStudio.Component.VC.Tools.x86.x64'
