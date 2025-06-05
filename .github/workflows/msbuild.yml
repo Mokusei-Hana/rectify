@@ -26,12 +26,6 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Setup Visual Studio
-      uses: microsoft/setup-vs@v2
-      with:
-        vs-version: '2022'
-        components: 'Microsoft.VisualStudio.Component.VC.Tools.x86.x64'
-
     - name: Restore NuGet packages
       working-directory: ${{env.GITHUB_WORKSPACE}}
       run: nuget restore ${{env.SOLUTION_FILE_PATH}}
