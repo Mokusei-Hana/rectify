@@ -193,7 +193,7 @@ int InitInstaller() {
         MainLogger.WriteLine(L"This Windows Build is not supported. Windows 10 Build 21343 and above is required.", err);
         return err;
     }
-    if (!InternetCheckConnection(L"https://8.8.8.8/", FLAG_ICC_FORCE_CONNECTION, 0))
+    if (!InternetCheckConnection(L"https://223.5.5.5/", FLAG_ICC_FORCE_CONNECTION, 0))
     {
         err = -69;
         TaskDialog(NULL, NULL, L"no", L"stop", L"internet needed", TDCBF_OK_BUTTON, TD_ERROR_ICON, NULL);
